@@ -22,16 +22,16 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Reproducibility
 
-![Your work doesn't count if it can't be reproduced.](~/Documents/Why.png)
+![Your work doesn't count if it can't be reproduced.](~/Documents/DSMMA_Retreat/Why.png)
 
 
 ## Reproducibility
 
-![Open science--share everything](~/Documents/OSF.png)
+![Open science--share everything](~/Documents/DSMMA_Retreat/OSF.png)
 
 ## Reproducibility
 
-![Everyone is welcome to participate.](~/Documents/Repro.png)
+![Everyone is welcome to participate.](~/Documents/DSMMA_Retreat/Repro.png)
 
 
 ## Computational Reproducibility
@@ -67,6 +67,18 @@ Reproducible dynamic report generation
 \begin{itemize}
 \item[] R markdown/R Notebook/Jupyter/Pandoc
 \end{itemize}
+
+## R Markdown
+
+Here is a nice tutorial on markdown
+
+https://commonmark.org/help/tutorial/
+
+\bigskip
+
+and here is the definitive guide
+
+https://bookdown.org/yihui/rmarkdown/
 
 ## Further Reading
 
