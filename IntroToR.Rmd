@@ -1,0 +1,288 @@
+---
+title: "Introduction to R"
+date: "August 2020"
+author: "Galin Jones"
+output: 
+  pdf_document:
+    toc: true
+    toc_depth: 2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## What is R?
+First there was S, a general-purpose, interpreted, computer language especially designed for statistics.  S is now a proprietary product marketed under the name S-PLUS <https://en.wikipedia.org/wiki/S-PLUS>.
+
+Later came R, which is free software (having the same license as Linux) and implements pretty much the same language as S-PLUS. R has surpassed its predecessor.
+
+R is free software, which means it is free as in "free beer" (you can download it with no charge) and free as in "free speech" (you can do whatever you want with it except make it non-free). 
+
+## R versus Python
+
+Both are great at what they do; see <https://blog.rstudio.com/2019/12/17/r-vs-python-what-s-the-best-for-language-for-data-science/>
+
+Arguing about this is boring.  There will be another language that comes along soon enough. (Julia anyone? <https://www.julialang.org/>) 
+
+Use the tool you are comfortable with to do the job you need it to.
+
+## How to get R and RStudio
+
+Hopefully you have already installed R and RStudio, but if not here is what to do.
+
+Start by installing R, which is available from the Comprehensive R Archive Network (CRAN) <https://cran.rstudio.com/>  Here is a video guide <https://vimeo.com/203516510>.
+
+Next install RStudio, which is available at <https://rstudio.com/products/rstudio/download/>  Here is a video guide <https://vimeo.com/203516968>.
+
+Another guide for installing R and RStudio can be found at <https://rstudio-education.github.io/hopr/starting.html>.
+
+## Two ways to use R
+
+* Terminal - Working with R at the terminal is not a great way to conduct an interactive session.  It is better to use your favorite text editor to create a file with your R commands and then use the `source` command to execute it.  For this reason working at the terminal is best once you have debugged your code and are ready to conduct a big job. In fact, for larger jobs that may take weeks, say, this is really the only way to go. To start a session type `R` at the prompt.  To finish a session type `q()` at the prompt.
+
+![Using R in a terminal](~/Documents/DSMMA_Retreat/RSC.png)
+
+* RStudio - Routine interactive sessions
+
+![Use RStudio for an interactive session](~/Documents/DSMMA_Retreat/RST.png)
+
+
+## Base R versus the tidyverse
+
+I'm mostly going to focus on Base R. A lot more detail than I will cover can be found in this tutorial <https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf>
+
+RYouWithMe <https://rladiessydney.org/courses/ryouwithme/> gives a nice introduction to the tidyverse. 
+
+People (see eg. <https://www.r-bloggers.com/why-i-dont-use-the-tidyverse/>) like to argue about Base R versus the tidyverse.  I don't, it's boring. Use the tool you are comfortable with to do the job you need it to.
+
+
+## Variables and Assignment
+
+Variable names may contain any letter, digit, underscore (_), or the dot (.) and cannot begin with a digit. 
+
+Names are case sensitive, so woof, Woof, and WOOF refer to different variables.
+
+The assignment operator in R is an arrow `<-` constructed from two characters. An assignment statement looks like
+
+```{r, echo=TRUE, include=TRUE}
+woof <- 4
+
+goof <- 2 + 2
+
+a.smashingly.long.variable.name <- sqrt(16)
+
+another_long_variable_name <- 2*2
+```
+
+Each assigns the value of the expression on the right side of the assignment operator to the variable name on the left side. In each case the variable gets the value 4.
+
+## Output (Print and Plot)
+In order to see any results from R. You have to execute a command that makes output.
+
+When a calculation is done or an assignment made, you don't see anything unless you ask explicitly.
+
+```{r, echo=TRUE, include=TRUE}
+woof <- 4
+woof
+```
+or equivalently
+```{r, echo=TRUE, include=TRUE}
+print(woof)
+```
+
+## External Data Entry
+From a URL
+
+<https://raw.githubusercontent.com/astrobayes/BMAD/master/data/Section_10p7/NB_GCs.csv>
+
+```{r, echo=TRUE, include=TRUE}
+Ngc.dat<-read.csv(url("https://raw.githubusercontent.com/astrobayes/BMAD/master/data/Section_10p7/NB_GCs.csv"))
+head(Ngc.dat)
+```
+
+From a file on your computer
+
+```{r, echo=TRUE, include=TRUE}
+foodat<-read.table(file = "~/Documents/DSMMA_Retreat/foodata.txt")
+head(foodat)
+```
+
+## Vectors in R
+Most R variables are vectors, which is R's name for a list of objects of the same type (often numbers but character variables and other types are possible).
+
+There are many ways to create vectors in R. Many functions and operators return vector values if given vector values as arguments. Here we will only look at a few ways to create a vector and a few functions and operators that work vectorwise. 
+
+### The c and seq Functions
+The c function "combines" or "collects" all its arguments into one vector.  The seq function creates sequences in a vector.
+```{r, echo=TRUE, include=TRUE}
+woof<-c(-34, 1.2, 3)
+woof
+
+alf<-seq(1,10)
+alf
+
+alf2<-seq(1,10,2)
+alf2
+```
+
+### Vectorwise Functions and Operators
+It is an important and generally useful fact about R that most functions and operators work vectorwise (operating on each element of the vector).
+
+```{r, echo=TRUE, include=TRUE}
+alf <- seq(1, 10)
+alf
+kate <- sqrt(alf)
+kate
+bri <- alf^2
+kate*bri
+```
+
+### Indexing Vectors
+Indexing operations allow you to modify or pick out or remove specified elements of a vector. They are useful for obtaining or modifying parts of a vector.
+
+#### Integer Indexing
+
+The simplest form of indexing uses positive integers in the range from one to the length of the vector. For example
+```{r, echo=TRUE, include=TRUE}
+alf <- seq(1, 10)
+alf
+alf[1]
+willie <- alf[c(3, 5, 7)]
+willie
+```
+do what is obvious (after you get used to vector indexing). Not quite so obvious is that subscripts work the same way on the other side of the assignment operator.
+```{r, echo=TRUE, include=TRUE}
+alf <- seq(1, 10)
+alf
+alf[1] <- 17
+alf[c(3, 5, 7)] <- 42
+alf
+```
+
+#### Negative Integer Indexing
+Negative index values indicate "everything but"
+```{r, echo=TRUE, include=TRUE}
+opie <- seq(1, 10)
+opie
+opie[seq(1, 10, 2)]
+opie[- seq(2, 10, 2)]
+```
+
+#### Logical Vector Indexing
+Perhaps the most useful form of indexing uses logical vectors. First the example, then the explanation.
+```{r, echo=TRUE, include=TRUE}
+bee<-c(12, 42, 33, 42)
+bee[bee != 42]
+```
+is the (vector of) elements of `bee` not equal to 42.
+
+The operator `!=` is "not equal". Similarly `<=` is "less than or equal" and `>=` is "greater than or equal".
+
+The result of `bee != 42` is a logical vector (all elements having values `TRUE` or `FALSE`. Indexing with such a vector picks out the elements for which the index is `TRUE`.
+
+When the logical vector is the result of a comparison (as here), it picks out the elements for which the comparison was TRUE. 
+
+## Data Summaries
+
+```{r, echo=TRUE, include=TRUE}
+head(Ngc.dat)
+is.data.frame(Ngc.dat)
+```
+Let's create a new variable so the we don't have to reference the data frame every time.  Alternatively you can use the `attach` function.
+```{r, echo=TRUE, include=TRUE}
+NGC<-Ngc.dat$N_GC
+```
+
+## Numerical Summaries
+
+The following commands can be used to produce numerical summaries:
+
+Command       | Result
+--------------|-----------------------------------------
+`length(var)`	| Computes the number of elements in `var`
+`mean(var)`	  | Computes the mean of `var`
+`median(var)`	| Computes the median of `var`
+`sd(var)`	    | Computes the standard deviation of `var`
+`summary(var)`|	Computes the five-number summary and mean of `var`
+`quantile(var, 0.25)`	| Computes the first quartile Q1 of `var`
+`quantile(var, 0.75)`	| Computes the third quartile Q3 of `var`
+`min(var)`	  | Computes the minimum of `var`
+`max(var)`	  | Computes the maximum of `var`
+
+
+```{r, echo=TRUE, include=TRUE}
+length(NGC)
+NGC<-NGC[!is.na(NGC)]
+length(NGC)
+summary(NGC)
+```
+
+
+## Graphical Summaries
+
+### Histograms
+
+The command `hist(var)` creates a histogram of `var`.
+
+```{r, echo=TRUE, include=TRUE}
+hist(NGC)
+```
+
+You can also limit the range of on the horizontal axis
+```{r, echo=TRUE, include=TRUE}
+hist(NGC, xlim=c(0,20000))
+```
+
+and add or take away labels
+```{r, echo=TRUE, include=TRUE}
+hist(NGC, xlim=c(0,20000), main="New Title", ylab="")
+```
+
+Adding reference points can be helpful `pch` is the type of symbol while `cex` is how big you want it to be.  
+```{r, echo=TRUE, include=TRUE}
+hist(NGC, xlim=c(0,20000), main="", ylab="")
+points(mean(NGC), 0, col="blue", pch=16, cex=2)
+points(median(NGC), 0, col="red", pch=17, cex=2)
+```
+
+### Scatterplots
+The data used in this section consists of heights and weights measured on 10 individuals.
+```{r, echo=TRUE, include=TRUE}
+weight<-c(165,171,169,182,176,212,198,114,230,179)
+height<-c(70,65,63,69,68,73,74,61,71,68)
+```
+
+The command `plot(weight,height)` creates a scatterplot with weight on the horizontal axis and height on the vertical axis.
+```{r, echo=TRUE, include=TRUE}
+plot(weight,height)    
+```
+
+You can label the axes and add a title to the plot:
+```{r, echo=TRUE, include=TRUE}
+plot(weight,height,xlab="Weight", ylab="Height")
+title("Heights and Weights")
+```
+
+You can also add a line with slope 0.1081 and intercept 48.7916:
+```{r, echo=TRUE, include=TRUE}
+plot(weight,height,xlab="Weight", ylab="Height")
+title("Heights and Weights")
+abline(48.7916,0.1081)
+```
+
+Rug plots can also be added:
+```{r, echo=TRUE, include=TRUE}
+plot(weight,height,xlab="Weight", ylab="Height")
+title("Heights and Weights")
+abline(48.7916,0.1081)
+rug(weight, side=1)
+rug(height, side=2)
+```
+
+
+## In Closing
+
+This tutorial barely scratches the surface of `R`'s capabilities. The focus has been on the types of things that are done on a routine basis.
+
+A final piece of free advice.  IMHO, the best way to learn `R`, or any other language for that matter, is to start working on a project and solve the issues you run into along the way.  Almost any issue that you encounter with R has been discovered by someone else and they've written about it on the internet.  

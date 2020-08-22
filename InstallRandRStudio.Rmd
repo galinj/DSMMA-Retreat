@@ -1,0 +1,34 @@
+---
+title: "Installing R and RStudio"
+author: "Galin Jones"
+date: "DSMMA Retreat 2020"
+output: 
+  html_document:
+    theme: flatly
+    code_download: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## How to get R and RStudio
+
+
+Start by installing R, which is available from the Comprehensive R Archive Network (CRAN) at this [link](https://cran.rstudio.com/).
+
+\bigskip\bigskip
+
+A video guide for installing R can be found at this [link](https://vimeo.com/203516510).
+
+\bigskip\bigskip
+
+Next install RStudio, which is available at this [link](https://rstudio.com/products/rstudio/download/).
+
+\bigskip\bigskip
+
+A video guide for installing RStudio can be found at this [link](https://vimeo.com/203516968).
+
+\bigskip\bigskip
+
+Another guide for installing R and RStudio can be found at this [link](https://rstudio-education.github.io/hopr/starting.html).

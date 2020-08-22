@@ -1,0 +1,78 @@
+---
+title: "Introduction to Reproducibility"
+date: "DSMMA Retreat 2020"
+author: "Galin Jones"
+institute: |
+ | School of Statistics
+ | University of Minnesota
+ | galin@umn.edu
+ | @JonesGalin
+output:  
+ beamer_presentation:
+# keep_tex: true
+ seal: false
+ includes:
+ in_header: ~/Dropbox/beamer-header-simple.txt
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Reproducibility
+
+![Your work doesn't count if it can't be reproduced.](~/Documents/Why.png)
+
+
+## Reproducibility
+
+![Open science--share everything](~/Documents/OSF.png)
+
+## Reproducibility
+
+![Everyone is welcome to participate.](~/Documents/Repro.png)
+
+
+## Computational Reproducibility
+
+A hallmark of the modern data science environment (industry and academia) is sharing code and data.  Make everything available that is required to reproduce your computational results *exactly*.
+
+\bigskip
+
+It begins by writing your code so that it is easily read by someone else (future you for example).  Free advice:
+\begin{itemize}
+\item[] Document your code.
+\item[] Use descriptive variable names.
+\item[] Format it to be easily read.
+\item[] Order functions for linear reading.
+\item[] Be consistent.
+\end{itemize}
+
+## Computational Reproducibility
+
+Reproducible data analysis and version control 
+\begin{itemize}
+\item[] Git/GitHub
+\item[] Emacs/RStudio/Spyder, 
+\end{itemize}
+
+Reproducible data 
+\begin{itemize}
+\item[] Data repositories
+\item[] Dataverse
+\end{itemize}
+
+Reproducible dynamic report generation 
+\begin{itemize}
+\item[] R markdown/R Notebook/Jupyter/Pandoc
+\end{itemize}
+
+## Further Reading
+
+\begin{itemize}
+\item[] R Open Science http://ropensci.github.io/reproducibility-guide/
+\item[] Dataverse https://dataverse.org/
+\item[] Code and Data for the Social Sciences:
+A Practitioner’s Guide http://web.stanford.edu/~gentzkow/research/CodeAndData.pdf
+\end{itemize}

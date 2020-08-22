@@ -1,0 +1,205 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Introduction to Reproducibility},
+  pdfauthor={Galin Jones},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Introduction to Reproducibility}
+\author{Galin Jones}
+\date{DSMMA Retreat 2020}
+\institute{School of Statistics\\
+University of Minnesota\\
+\href{mailto:galin@umn.edu}{\nolinkurl{galin@umn.edu}}\\
+@JonesGalin}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Reproducibility}
+\protect\hypertarget{reproducibility}{}
+
+\begin{figure}
+\centering
+\includegraphics{~/Documents/Why.png}
+\caption{Your work doesn't count if it can't be reproduced.}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Reproducibility}
+\protect\hypertarget{reproducibility-1}{}
+
+\begin{figure}
+\centering
+\includegraphics{~/Documents/OSF.png}
+\caption{Open science--share everything}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Reproducibility}
+\protect\hypertarget{reproducibility-2}{}
+
+\begin{figure}
+\centering
+\includegraphics{~/Documents/Repro.png}
+\caption{Everyone is welcome to participate.}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Computational Reproducibility}
+\protect\hypertarget{computational-reproducibility}{}
+
+A hallmark of the modern data science environment (industry and
+academia) is sharing code and data. Make everything available that is
+required to reproduce your computational results \emph{exactly}.
+
+\bigskip
+
+It begins by writing your code so that it is easily read by someone else
+(future you for example). Free advice:
+
+\begin{itemize}
+\item[] Document your code.
+\item[] Use descriptive variable names.
+\item[] Format it to be easily read.
+\item[] Order functions for linear reading.
+\item[] Be consistent.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Computational Reproducibility}
+\protect\hypertarget{computational-reproducibility-1}{}
+
+Reproducible data analysis and version control
+
+\begin{itemize}
+\item[] Git/GitHub
+\item[] Emacs/RStudio/Spyder, 
+\end{itemize}
+
+Reproducible data
+
+\begin{itemize}
+\item[] Data repositories
+\item[] Dataverse
+\end{itemize}
+
+Reproducible dynamic report generation
+
+\begin{itemize}
+\item[] R markdown/R Notebook/Jupyter/Pandoc
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Further Reading}
+\protect\hypertarget{further-reading}{}
+
+\begin{itemize}
+\item[] R Open Science http://ropensci.github.io/reproducibility-guide/
+\item[] Dataverse https://dataverse.org/
+\item[] Code and Data for the Social Sciences:
+A Practitioner’s Guide http://web.stanford.edu/~gentzkow/research/CodeAndData.pdf
+\end{itemize}
+
+\end{frame}
+
+\end{document}
